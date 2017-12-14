@@ -1,30 +1,32 @@
-import 'hammerjs';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { AppComponent } from './core/containers/app.component';
-import { HomeComponent } from './home/home.component';
-
-import { CoreModule } from './core/core.module';
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+
+import { CoreModule } from './core/core.module'; //not lazy loaded
+// import { AuthModule } from './auth/auth.module'; //not lazy loaded
+import { HomeModule } from './home/home.module';
+import { CatalogModule } from './catalog/catalog.module';
+
 import { environment } from '../environments/environment';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
+    CoreModule,
+    HomeModule,
+    // AuthModule,
+    CatalogModule,
     AppRoutingModule,
-    CoreModule.forRoot(),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+
+  declarations: [
+    AppComponent
+  ],
+
+  bootstrap: [
+    AppComponent,
+  ]
 })
 export class AppModule { }

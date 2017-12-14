@@ -1,0 +1,8 @@
+only services imported in appmodule
+providers for singleton services
+imported into root appmodule only
+preferably a pure services module with no declarations
+
+---
+service module
+no components

@@ -1,27 +1,27 @@
+import 'hammerjs'; // wrap in module
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { MenuComponent } from './components/menu.component';
-import { MaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './../material/material.module';
+
+import { PageNotFoundComponent } from './containers/page-not-found.component';
+import { NavbarComponent } from './components/navbar.component';
 
 export const COMPONENTS = [
-  MenuComponent,
+  PageNotFoundComponent,
+  NavbarComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule, 
+    RouterModule,
     MaterialModule
   ],
-  declarations: COMPONENTS,
   exports: COMPONENTS,
+  declarations: COMPONENTS,
 })
-export class CoreModule {
-  static forRoot() {
-    return {
-      ngModule: CoreModule
-    };
-  }
-}
+export class CoreModule { }

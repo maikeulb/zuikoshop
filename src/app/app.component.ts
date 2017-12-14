@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-        <app-menu></app-menu>
+        <app-navbar></app-navbar>
 
         <div class="container">
           <router-outlet></router-outlet>

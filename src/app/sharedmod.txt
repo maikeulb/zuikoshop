@@ -1,0 +1,12 @@
+components directives and pipes used everywhere
+entirely of exported declartions
+may re-export other widget modules
+should have no providers
+import sharedmodule in feature module
+
+---
+widget module
+no services
+
+--
+flex layout, animations, material

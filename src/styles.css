@@ -1,7 +1,6 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.starter-template {
-    padding: 3rem 1.5rem;
+  body{
     text-align: center;
+    font-family: 'Roboto', 'Noto', sans-serif;
   }
-
