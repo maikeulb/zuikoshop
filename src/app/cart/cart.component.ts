@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-catalog',
+  selector: 'app-cart',
   template: `
     <router-outlet></router-outlet>
   `
 })
-export class CatalogComponent {}
+export class CartComponent {}

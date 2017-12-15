@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'bc-not-found-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-<p>it works</p>
+<p>page not found</p>
   `,
 
   styles: [

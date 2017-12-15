@@ -20,6 +20,8 @@ export class NavbarComponent {
   constructor(private router: Router) {
     this.routeLinks = [
       { label: 'Home', link: '/home' },
-      { label: 'Catalog', link: '/catalog/list' }];
+      { label: 'Catalog', link: '/catalog/list' },
+      { label: 'Cart', link: '/cart/content' },
+      { label: 'Checkout', link: '/cart/checkout' }];
   }
 }
