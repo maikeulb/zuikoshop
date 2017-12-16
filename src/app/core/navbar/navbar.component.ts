@@ -4,24 +4,40 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-navbar',
   template: `
-  <nav mat-tab-nav-bar>
-     <a mat-tab-link *ngFor="let routeLink of routeLinks; let i = index"
-      [routerLink]="routeLink.link" [active]="activeLinkIndex === i"
-      (click)="activeLinkIndex = i">
-      {{routeLink.label}}
-    </a>
-  </nav>
-`
+    <mat-toolbar style="background:#FFFFFF;">
+      <button mat-button routerLink="/">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button mat-button routerLink="/shop">Shop</button>
+      <span class="fill-remaining-space"></span>
+      <button mat-button routerLink="/products"><mat-icon>shopping_cart</mat-icon></button>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" yPosition="below" [overlapTrigger]="false">
+        <button mat-menu-item>
+          <span>Login</span>
+        </button>
+        <button mat-menu-item>
+          <span>Register</span>
+        </button>
+      </mat-menu>
+
+    </mat-toolbar>
+  `,
+  styles: [`
+    .fill-remaining-space {
+      flex: 1 1 auto;
+    }
+  `]
 })
 export class NavbarComponent {
 
   routeLinks: any[];
-  activeLinkIndex = 0;
   constructor(private router: Router) {
     this.routeLinks = [
-      { label: 'Home', link: '/home' },
       { label: 'Catalog', link: '/catalog/list' },
-      { label: 'Cart', link: '/cart/content' },
-      { label: 'Checkout', link: '/cart/checkout' }];
+      { label: 'Cart', link: '/cart/content' }];
   }
 }

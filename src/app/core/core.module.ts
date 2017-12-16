@@ -18,6 +18,8 @@ export const COMPONENTS = [
   imports: [
     CommonModule,
     RouterModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
     MaterialModule
   ],
   exports: COMPONENTS,
