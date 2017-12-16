@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Item } from './../models/item';
 
@@ -6,8 +6,25 @@ import { Item } from './../models/item';
   selector: 'app-catalog-list',
   template: `
     <div class="catalog-container">
-     <p>Catalog list works!</p>
+      <div class="catalog-list">
+        <app-catalog-item></app-catalog-item>
+      </div>
     </div>
   `,
+    styles: [
+        `
+        .catalog-container {
+            margin-left : 10%;
+            margin-right: 10%;
+            text-align: center;
+        }
+        .catalog-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+        }
+        `
+    ],
+
 })
 export class CatalogListComponent {}
