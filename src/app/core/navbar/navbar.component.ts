@@ -9,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
         <mat-icon>home</mat-icon>
       </button>
       <button mat-button routerLink="/shop">Shop</button>
+
       <span class="fill-remaining-space"></span>
+      <h1>Zuiko Shop</h1>
+      <span class="fill-remaining-space"></span>
+
       <button mat-button routerLink="/products"><mat-icon>shopping_cart</mat-icon></button>
 
       <button mat-icon-button [matMenuTriggerFor]="menu">

@@ -3,7 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
-import { CoreModule } from './core/core.module'; 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { CatalogModule } from './catalog/catalog.module';
 
@@ -13,6 +17,9 @@ import { AppComponent } from './app.component';
 @NgModule({
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     CoreModule,
     HomeModule,
     CatalogModule,
