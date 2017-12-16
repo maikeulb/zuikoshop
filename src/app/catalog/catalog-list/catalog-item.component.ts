@@ -5,7 +5,7 @@ import { Item } from './../models/item';
   selector: 'app-catalog-item',
   template: `
     <mat-card class="matCard2 mat-elevation-z0">
-      <img mat-card-image alt="Photo of a book">
+      <img mat-card-image alt="Photo of a Item">
       <mat-card-content>
         <a>Olympus OM1</a>
         <p>$19.991</p>

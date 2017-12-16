@@ -4,6 +4,9 @@ import { MaterialModule } from '../material/material.module';
 import { CatalogRoutingModule, routedComponents } from './catalog-routing.module';
 import { CatalogItemComponent } from './catalog-list/catalog-item.component';
 
+import { ItemNavigatorComponent } from './item-details/item-navigator.component';
+import { AddToCartComponent } from './item-details/add-to-cart.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -13,6 +16,8 @@ import { CatalogItemComponent } from './catalog-list/catalog-item.component';
   declarations: [
     routedComponents,
     CatalogItemComponent,
+    ItemNavigatorComponent,
+    AddToCartComponent,
   ]
 })
 export class CatalogModule { }

@@ -5,13 +5,19 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './../material/material.module';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+
+import { AuthService } from './services/auth.service';
 
 export const COMPONENTS = [
   PageNotFoundComponent,
-  NavbarComponent
+  NavbarComponent,
+  LoginComponent
 ];
 
 @NgModule({
@@ -20,9 +26,14 @@ export const COMPONENTS = [
     RouterModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
   exports: COMPONENTS,
   declarations: COMPONENTS,
+  providers: [
+    AuthService,
+  ]
 })
 export class CoreModule { }

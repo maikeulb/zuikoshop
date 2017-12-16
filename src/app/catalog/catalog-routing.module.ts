@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CatalogComponent } from './catalog.component';
 import { CatalogListComponent } from './catalog-list/catalog-list.component';
-import { SelectedItemComponent } from './selected-item/selected-item.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     component: CatalogComponent,
     children: [
       { path: 'list', component: CatalogListComponent },
-      { path: 'item/:id', component: SelectedItemComponent },
+      { path: 'item/:id', component: ItemDetailsComponent },
       { path: '', redirectTo: 'list', pathMatch: 'full' }
     ]
   }
@@ -26,5 +26,5 @@ export class CatalogRoutingModule { }
 export const routedComponents = [
   CatalogComponent,
   CatalogListComponent,
-  SelectedItemComponent
+  ItemDetailsComponent
 ];
