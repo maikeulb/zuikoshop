@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from '../services/auth.service';
+
 @Component({
   selector: 'app-navbar',
   template: `
@@ -19,7 +21,12 @@ import { Component, OnInit } from '@angular/core';
 
       <div fxLayout="row" fxShow="false" fxShow.gt-sm>
         <button mat-button routerLink="/cart"><mat-icon>shopping_cart</mat-icon></button>
-        <app-login>login</app-login>
+          <div *ngIf="auth.user$ | async as user; else anonymousUser">
+            <button mat-button (click)="logout()">Logout</button>
+          </div>
+        <ng-template #anonymousUser>
+          <button mat-button (click)="login()">Login with Google</button>
+        </ng-template>
       </div>
 
       <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -31,7 +38,12 @@ import { Component, OnInit } from '@angular/core';
     <mat-menu x-position="before" #menu="matMenu" [overlapTrigger]="false">
       <button mat-menu-item routerLink="/catalog">Shop</button>
       <button mat-menu-item routerLink="/cart">Checkout</button>
-      <app-login>login</app-login>
+      <div *ngIf="auth.user$ | async as user; else anonymousUser">
+        <button mat-menu-item (click)="logout()">Logout</button>
+      </div>
+      <ng-template #anonymousUser>
+        <button mat-menu-item (click)="login()">Login with Google</button>
+      </ng-template>
     </mat-menu>
 
   `,
@@ -43,10 +55,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent {
 
-  routeLinks: any[];
-  constructor(private router: Router) {
-    this.routeLinks = [
-      { label: 'Catalog', link: '/catalog/list' },
-      { label: 'Cart', link: '/cart/content' }];
+  constructor(private auth: AuthService) {
   }
+
+  login() {
+    this.auth.login();
+  }
+
+  logout() {
+    this.auth.logout();
+  }
+
 }

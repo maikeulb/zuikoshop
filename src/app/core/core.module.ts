@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard} from './services/auth-guard.service';
+import { UserService} from './services/user.service';
 
 export const COMPONENTS = [
   PageNotFoundComponent,
@@ -36,6 +37,7 @@ export const COMPONENTS = [
   providers: [
     AuthService,
     AuthGuard,
+    UserService,
   ]
 })
 export class CoreModule { }
