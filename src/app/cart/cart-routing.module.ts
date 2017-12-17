@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AuthGuard} from '../core/services/auth-guard.service';
 
 import { CartComponent } from './cart.component';
@@ -10,13 +11,20 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'cart',
     component: CartComponent,
     children: [
-      { path: '', component: CartContentComponent },
-      { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
-      { path: 'checkout-success/:id', component: CheckoutCompleteComponent, canActivate: [AuthGuard] },
-      { path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+      { path: '',
+        component: CartContentComponent },
+      { path: 'checkout',
+        component: CheckoutComponent,
+        canActivate: [AuthGuard] },
+      { path: 'checkout-success/:id',
+        component: CheckoutCompleteComponent,
+        canActivate: [AuthGuard] },
+      { path: 'my-orders',
+        component: MyOrdersComponent,
+        canActivate: [AuthGuard] },
     ]
   }
 ];

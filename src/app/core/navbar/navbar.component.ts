@@ -30,7 +30,7 @@ import { AuthService } from '../services/auth.service';
             <mat-menu #menu = "matMenu" [overlapTrigger]="false">
               <ng-container *ngIf="appUser.isAdmin">
                 <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
-                <button mat-menu-item routerLink="/admin/catalog">Manage Catalog Items</button>
+                <button mat-menu-item routerLink="/admin/catalog">Manage Catalog</button>
               </ng-container>
               <button mat-menu-item (click)="logout()">Logout</button>
             </mat-menu>
