@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
+import { AuthGuard} from './services/auth-guard.service';
 
 export const COMPONENTS = [
   PageNotFoundComponent,
@@ -34,6 +35,7 @@ export const COMPONENTS = [
   declarations: COMPONENTS,
   providers: [
     AuthService,
+    AuthGuard,
   ]
 })
 export class CoreModule { }

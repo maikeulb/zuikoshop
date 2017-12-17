@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard} from '../core/services/auth-guard.service';
 
 import { CartComponent } from './cart.component';
 import { CartContentComponent } from './cart-content/cart-content.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutCompleteComponent } from './checkout-complete/checkout-complete.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 const routes: Routes = [
   {
@@ -12,8 +14,9 @@ const routes: Routes = [
     component: CartComponent,
     children: [
       { path: 'content', component: CartContentComponent },
-      { path: 'checkout', component: CheckoutComponent },
-      { path: 'complete', component: CheckoutCompleteComponent },
+      { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+      { path: 'checkout-success/:id', component: CheckoutCompleteComponent, canActivate: [AuthGuard] },
+      { path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
       { path: '', redirectTo: 'content', pathMatch: 'full'}
     ]
   }
@@ -30,4 +33,5 @@ export const routedComponents = [
   CartContentComponent,
   CheckoutComponent,
   CheckoutCompleteComponent,
+  MyOrdersComponent,
 ];
