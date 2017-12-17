@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules} from '@angular/router';
 
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-// import { LoginComponent } from './core/login/login.component';
 
 const routes: Routes = [
-  { path: 'home', loadChildren: 'app/home/home.module#HomeModule'},
+  { path: '', loadChildren: 'app/home/home.module#HomeModule'},
+  { path: 'login', loadChildren: 'app/login/login.module#LoginModule'},
   { path: 'catalog', loadChildren: 'app/catalog/catalog.module#CatalogModule'},
   { path: 'cart', loadChildren: 'app/cart/cart.module#CartModule'},
   { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'},
-  // { path: 'login', component: LoginComponent },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 ];
 

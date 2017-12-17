@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+import { AppUser } from '../models/app-user';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -22,11 +24,20 @@ import { AuthService } from '../services/auth.service';
       <div fxLayout="row" fxShow="false" fxShow.gt-sm>
         <button mat-button routerLink="/cart"><mat-icon>shopping_cart</mat-icon></button>
           <div *ngIf="appUser; else anonymousUser">
-            <button mat-button (click)="logout()">Logout</button>
+            <button mat-button [matMenuTriggerFor]="menu">
+              {{ appUser.name }}
+            </button>
+            <mat-menu #menu = "matMenu" [overlapTrigger]="false">
+              <ng-container *ngIf="appUser.isAdmin">
+                <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
+                <button mat-menu-item routerLink="/admin/catalog">Manage Catalog Items</button>
+              </ng-container>
+              <button mat-menu-item (click)="logout()">Logout</button>
+            </mat-menu>
           </div>
-        <ng-template #anonymousUser>
-          <button mat-button (click)="login()">Login with Google</button>
-        </ng-template>
+          <ng-template #anonymousUser>
+            <button mat-button (click)="login()">Login with Google</button>
+          </ng-template>
       </div>
 
       <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -39,6 +50,10 @@ import { AuthService } from '../services/auth.service';
       <button mat-menu-item routerLink="/catalog">Shop</button>
       <button mat-menu-item routerLink="/cart">Checkout</button>
       <div *ngIf="appUser; else menuAnonymousUser">
+        <ng-container *ngIf="appUser.isAdmin">
+          <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
+          <button mat-menu-item routerLink="/admin/catalog">Manage Catalog</button>
+        </ng-container>
         <button mat-menu-item (click)="logout()">Logout</button>
       </div>
       <ng-template #menuAnonymousUser>
@@ -53,9 +68,8 @@ import { AuthService } from '../services/auth.service';
     }
   `]
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   appUser: AppUser;
-
   constructor(private auth: AuthService) {
   }
 

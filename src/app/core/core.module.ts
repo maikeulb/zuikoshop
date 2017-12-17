@@ -11,16 +11,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './login/login.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard} from './services/auth-guard.service';
+import { AdminAuthGuard} from './services/admin-auth-guard.service';
 import { UserService} from './services/user.service';
 
 export const COMPONENTS = [
   PageNotFoundComponent,
   NavbarComponent,
-  LoginComponent
 ];
 
 @NgModule({
@@ -38,6 +37,7 @@ export const COMPONENTS = [
   providers: [
     AuthService,
     AuthGuard,
+    AdminAuthGuard,
     UserService,
     AngularFireDatabase,
   ]

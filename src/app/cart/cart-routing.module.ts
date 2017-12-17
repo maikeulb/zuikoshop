@@ -13,11 +13,10 @@ const routes: Routes = [
     path: '',
     component: CartComponent,
     children: [
-      { path: 'content', component: CartContentComponent },
+      { path: '', component: CartContentComponent },
       { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
       { path: 'checkout-success/:id', component: CheckoutCompleteComponent, canActivate: [AuthGuard] },
       { path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
-      { path: '', redirectTo: 'content', pathMatch: 'full'}
     ]
   }
 ];

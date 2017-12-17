@@ -17,11 +17,10 @@ export class AuthService {
 
   constructor(
     private userService: UserService,
-    private afAuth: AngularFireAuth, 
-    private route: ActivatedRoute) { 
-    this.user$ = afAuth.authState;    
+    private afAuth: AngularFireAuth,
+    private route: ActivatedRoute) {
+    this.user$ = afAuth.authState;
   }
-
 
   login() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
@@ -34,11 +33,11 @@ export class AuthService {
     this.afAuth.auth.signOut();
   }
 
-  get appUser$() : Observable<AppUser> {
+  get appUser$(): Observable<AppUser> {
     return this.user$
       .switchMap(user => {
         if (user) return this.userService.get(user.uid);
         return Observable.of(null);
-      });    
+      });
   }
 }

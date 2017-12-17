@@ -1,10 +1,9 @@
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
   template: `
-
     <div *ngIf="auth.user$ | async as user; else anonymousUser">
       <button mat-menu-item (click)="logout()">Logout</button>
     </div>

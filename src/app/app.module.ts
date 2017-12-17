@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
+import { LoginModule } from './login/login.module';
 import { CatalogModule } from './catalog/catalog.module';
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebase),
     CoreModule,
     HomeModule,
+    LoginModule,
     CatalogModule,
     AppRoutingModule,
   ],

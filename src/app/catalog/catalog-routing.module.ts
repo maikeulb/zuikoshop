@@ -10,9 +10,8 @@ const routes: Routes = [
     path: '',
     component: CatalogComponent,
     children: [
-      { path: 'list', component: CatalogListComponent },
+      { path: '', component: CatalogListComponent },
       { path: 'item/:id', component: ItemDetailsComponent },
-      { path: '', redirectTo: 'list', pathMatch: 'full' }
     ]
   }
 ];
