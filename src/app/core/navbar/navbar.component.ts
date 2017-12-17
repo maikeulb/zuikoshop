@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   template: `
     <mat-toolbar style="background:#FFFFFF;">
 
-      <button mat-button routerLink="/">
+      <button mat-button routerLink="/home">
         <mat-icon>home</mat-icon>
       </button>
       <div fxLayout="row" fxShow="false" fxShow.gt-sm>

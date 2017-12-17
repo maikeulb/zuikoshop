@@ -7,25 +7,27 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { HomeModule } from './home/home.module';
-import { LoginModule } from './login/login.module';
+import { MaterialModule } from './material/material.module';
 import { CatalogModule } from './catalog/catalog.module';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     CoreModule,
-    HomeModule,
-    LoginModule,
+    MaterialModule,
     CatalogModule,
     AppRoutingModule,
   ],
 
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent
   ],
 
   bootstrap: [

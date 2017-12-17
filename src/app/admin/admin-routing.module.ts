@@ -15,10 +15,10 @@ const routes: Routes = [
     children: [
       { path: 'catalog', 
         component: AdminCatalogComponent,
-        canActivate: [AuthGuard, AdminAuthGuard] 
+        canActivate: [AuthGuard, AdminAuthGuard]},
       { path: 'orders', 
         component: AdminOrdersComponent,
-        canActivate: [AuthGuard, AdminAuthGuard] 
+        canActivate: [AuthGuard, AdminAuthGuard]}
     ]
   }
 ];
