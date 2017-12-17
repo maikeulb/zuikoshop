@@ -5,7 +5,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './../material/material.module';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -38,6 +39,7 @@ export const COMPONENTS = [
     AuthService,
     AuthGuard,
     UserService,
+    AngularFireDatabase,
   ]
 })
 export class CoreModule { }

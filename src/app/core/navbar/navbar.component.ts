@@ -21,7 +21,7 @@ import { AuthService } from '../services/auth.service';
 
       <div fxLayout="row" fxShow="false" fxShow.gt-sm>
         <button mat-button routerLink="/cart"><mat-icon>shopping_cart</mat-icon></button>
-          <div *ngIf="auth.user$ | async as user; else anonymousUser">
+          <div *ngIf="appUser; else anonymousUser">
             <button mat-button (click)="logout()">Logout</button>
           </div>
         <ng-template #anonymousUser>
@@ -38,10 +38,10 @@ import { AuthService } from '../services/auth.service';
     <mat-menu x-position="before" #menu="matMenu" [overlapTrigger]="false">
       <button mat-menu-item routerLink="/catalog">Shop</button>
       <button mat-menu-item routerLink="/cart">Checkout</button>
-      <div *ngIf="auth.user$ | async as user; else anonymousUser">
+      <div *ngIf="appUser; else menuAnonymousUser">
         <button mat-menu-item (click)="logout()">Logout</button>
       </div>
-      <ng-template #anonymousUser>
+      <ng-template #menuAnonymousUser>
         <button mat-menu-item (click)="login()">Login with Google</button>
       </ng-template>
     </mat-menu>
@@ -54,8 +54,13 @@ import { AuthService } from '../services/auth.service';
   `]
 })
 export class NavbarComponent {
+  appUser: AppUser;
 
   constructor(private auth: AuthService) {
+  }
+
+  async ngOnInit() {
+    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
 
   login() {
