@@ -1,22 +1,25 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { Product } from '../models/product';
+import { MatSort, MatPaginator, MatTableDataSource} from '@angular/material'; 
+
 import { Subscription } from 'rxjs/Subscription';
+
+import { Product } from '../models/product';
+
 import { ProductService } from '../../core/services/product.service';
-import { MatSort, MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
-  selector: 'app-admin-catalog',
+  selector: 'admin-catalog',
   template: `
-  <p>
-    <a routerLink="/admin/catalog/new">Add New Catalog Item</a>
-  </p>
+    <p>
+      <a routerLink="/admin/catalog/new">Add New Catalog Item</a>
+    </p>
 
-  <div class="example-container mat-elevation-z1">
-  <div class="example-header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
-  </div>
+    <div class="example-container mat-elevation-z1">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
 
     <mat-table #table [dataSource]="dataSource" matSort>
 

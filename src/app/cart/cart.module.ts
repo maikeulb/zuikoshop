@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 
 import { CartRoutingModule, routedComponents } from './cart-routing.module';
 
@@ -13,7 +13,7 @@ import { FieldComponent } from './field/field.component';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     CartRoutingModule,
   ],
   declarations: [

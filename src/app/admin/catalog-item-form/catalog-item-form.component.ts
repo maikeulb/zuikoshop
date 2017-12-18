@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import 'rxjs/add/operator/take';
+
 import { CategoryService } from '../../core/services/category.service';
 import { ProductService } from '../../core/services/product.service';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/take';
-import {FormControl, Validators} from '@angular/forms';
+
+import { FormControl, Validators} from '@angular/forms'; //move
 
 @Component({
   selector: 'app-catalog-item-form',
@@ -70,7 +72,7 @@ import {FormControl, Validators} from '@angular/forms';
         <mat-card-title>{{ model.value }}</mat-card-title>
         <mat-card-subtitle>Short Description</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image [src]="product.imageUrl" alt="{{ product.model}}">
+    <img mat-card-image [src]="product.imageUrl" alt="{{ product.model}}">
       <mat-card-content>
       <p>{{ price.value | currency:'USD':true }}</p>
       </mat-card-content>

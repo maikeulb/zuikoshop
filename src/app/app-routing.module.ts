@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules} from '@angular/router';
 
+import { HomeComponent } from './core/home/home.component';
 import { PageNotFoundComponent } from './core/page-not-found/page-not-found.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'login', loadChildren: 'app/login/login.module#LoginModule'},
   { path: 'catalog', loadChildren: 'app/catalog/catalog.module#CatalogModule'},
   { path: 'cart', loadChildren: 'app/cart/cart.module#CartModule'},
   { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'},

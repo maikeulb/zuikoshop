@@ -1,5 +1,5 @@
 import { AuthService } from '../core/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -10,12 +10,11 @@ import { Component, OnInit } from '@angular/core';
     <ng-template #anonymousUser>
       <button mat-menu-item (click)="login()">Login with Google</button>
     </ng-template>
-
   `
 })
 export class LoginComponent {
 
-  constructor(public auth: AuthService) {
+  constructor(private auth: AuthService) {
   }
 
   login() {

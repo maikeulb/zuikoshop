@@ -13,7 +13,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       text-align: center;
     }
   `,
-
   ],
 })
 export class PageNotFoundComponent {}

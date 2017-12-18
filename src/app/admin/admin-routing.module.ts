@@ -30,7 +30,7 @@ const routes: Routes = [
         component: AdminOrdersComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
       },
-    ]
+    ],
   }
 ];
 
@@ -43,5 +43,6 @@ export class AdminRoutingModule { }
 export const routedComponents = [
   AdminComponent,
   AdminCatalogComponent,
-  AdminOrdersComponent
+  AdminOrdersComponent,
+  CatalogItemFormComponent
 ];

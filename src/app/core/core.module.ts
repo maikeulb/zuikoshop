@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from './../material/material.module';
+
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { SharedModule} from '../shared/shared.module';
 
-import { AuthService } from './services/auth.service';
+import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 import { AuthGuard} from './services/auth-guard.service';
 import { AdminAuthGuard} from './services/admin-auth-guard.service';
+import { AuthService } from './services/auth.service';
 import { UserService} from './services/user.service';
 import { CategoryService} from './services/category.service';
 import { ProductService} from './services/product.service';
@@ -22,15 +23,15 @@ import { ProductService} from './services/product.service';
 export const COMPONENTS = [
   PageNotFoundComponent,
   NavbarComponent,
+  HomeComponent,
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     RouterModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MaterialModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
