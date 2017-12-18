@@ -11,7 +11,7 @@ import { UserService } from './core/services/user.service';
     <div class="container">
       <router-outlet></router-outlet>
     </div>
-  `
+  `,
   styles: [`
     .container {
       padding-top: 20px;
