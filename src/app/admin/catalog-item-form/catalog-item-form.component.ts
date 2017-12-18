@@ -4,6 +4,7 @@ import { ProductService } from '../../core/services/product.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/take';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-catalog-item-form',
@@ -13,25 +14,41 @@ import 'rxjs/add/operator/take';
     <form #f="ngForm" (ngSubmit)="save(f.value)" class="catalogItemForm-container">
 
       <mat-form-field>
-        <input matInput #model="ngModel" [(ngModel)]="product.model" name="model" placeholder="Model">
+        <input matInput #model="ngModel" [(ngModel)]="product.model"
+          name="model" placeholder="Model"
+          required
+          >
+        <mat-error>Please input camera model</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput #price="ngModel" [(ngModel)]="product.price" name="price"
-          placeholder="Amount" type="number" class="example-right-align"
-         >
-          <span matPrefix>$&nbsp;</span>
-          <span matSuffix>.00</span>
+        <input matInput #price="ngModel" [(ngModel)]="product.price"
+          name="price" placeholder="Amount" type="number" class="example-right-align"
+          required [min]=0
+          >
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+        <mat-error *ngIf="price.errors?.min">Price must be greater than $0.</mat-error>
+        <mat-error *ngIf="price.errors?.required">Please enter price.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select #category="ngModel" [(ngModel)]="product.category" name="category" placeholder="Category">
+        <mat-select #category="ngModel" [(ngModel)]="product.category" name="category"
+          placeholder="Category"
+          required
+          >
           <mat-option *ngFor="let c of categories$ | async" [value]="c.$key">{{ c.name }}</mat-option>
         </mat-select>
+        <mat-error>Please select category.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input #imageUrl="ngModel" [(ngModel)]=product.imageUrl name="imageUrl" matInput placeholder="Image Url">
+        <input matInput #imageUrl="ngModel" [(ngModel)]="product.imageUrl"
+          name="imageUrl" placeholder="Image Url"
+          required url
+          >
+        <mat-error *ngIf="imageUrl.errors?.url">Please enter a valid URL.</mat-error>
+        <mat-error *ngIf="imageUrl.errors?.required">Please enter image URL.</mat-error>
       </mat-form-field>
       <div>
         <button mat-button >Save</button>
@@ -76,10 +93,9 @@ export class CatalogItemFormComponent implements OnInit {
     } else {
       this.productService.create(product);
     }
-    this.router.navigate(['/admin/products']);
+    this.router.navigate(['/admin/catalog']);
   }
 
   ngOnInit() {
   }
-
 }
