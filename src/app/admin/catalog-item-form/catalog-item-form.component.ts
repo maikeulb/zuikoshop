@@ -9,8 +9,14 @@ import {FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-catalog-item-form',
   template: `
-    <div fxFlexOffset.gt-sm="15%" fxFlex.gt-sm="70%">
-
+    <div
+    fxLayout="column"
+    fxLayoutGap.gt-sm="10%"
+    fxLayout.gt-sm="row"
+    fxFlexOffset.gt-sm="15%"
+    fxFlex.gt-sm="70%"
+    >
+    <div fxFlex="100%">
     <form #f="ngForm" (ngSubmit)="save(f.value)" class="catalogItemForm-container">
 
       <mat-form-field>
@@ -54,6 +60,21 @@ import {FormControl, Validators} from '@angular/forms';
         <button mat-button >Save</button>
       </div>
     </form>
+    </div>
+
+    <div fxFlex="100%">
+      <mat-card class="product-card">
+        <mat-card-header>
+        <div mat-card-avatar class="product-header-image"></div>
+        <mat-card-title>{{ model.value }}</mat-card-title>
+        <mat-card-subtitle>Short Description</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+      <p>{{ price.value | currency:'USD':true }}</p>
+      </mat-card-content>
+    </mat-card>
+    </div>
     </div>
 
   `,

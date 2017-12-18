@@ -12,6 +12,11 @@ import { UserService } from './core/services/user.service';
       <router-outlet></router-outlet>
     </div>
   `
+  styles: [`
+    .container {
+      padding-top: 20px;
+    }
+    `]
 })
 export class AppComponent {
   constructor(
