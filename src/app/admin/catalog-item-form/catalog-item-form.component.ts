@@ -58,18 +58,19 @@ import {FormControl, Validators} from '@angular/forms';
       </mat-form-field>
       <div>
         <button mat-button >Save</button>
+        <button mat-button type="button" (click)="delete()">Delete</button>
       </div>
     </form>
     </div>
 
     <div fxFlex="100%">
-      <mat-card class="product-card">
+      <mat-card *ngIf="product.model" class="product-card">
         <mat-card-header>
         <div mat-card-avatar class="product-header-image"></div>
         <mat-card-title>{{ model.value }}</mat-card-title>
         <mat-card-subtitle>Short Description</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <img mat-card-image [src]="product.imageUrl" alt="{{ product.model}}">
       <mat-card-content>
       <p>{{ price.value | currency:'USD':true }}</p>
       </mat-card-content>
@@ -78,8 +79,9 @@ import {FormControl, Validators} from '@angular/forms';
     </div>
 
   `,
-  styles: [ `
 
+  styles: [ 
+  `
     .catalogItemForm-container {
       display: flex;
       flex-direction: column;
@@ -87,8 +89,8 @@ import {FormControl, Validators} from '@angular/forms';
     .catalogItemForm-container > * {
       width: 100%;
     }
-
   `]
+
 })
 export class CatalogItemFormComponent implements OnInit {
   categories$;
@@ -96,11 +98,11 @@ export class CatalogItemFormComponent implements OnInit {
   id;
 
   constructor(
-    private categoryService: CategoryService,
     private router: Router,
-    private productService: ProductService,
     private route: ActivatedRoute,
-    ) {
+    private categoryService: CategoryService,
+    private productService: ProductService,
+  ) {
     this.categories$ = categoryService.getAll();
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id) {
@@ -114,6 +116,14 @@ export class CatalogItemFormComponent implements OnInit {
     } else {
       this.productService.create(product);
     }
+    this.router.navigate(['/admin/catalog']);
+  }
+
+  delete() {
+    if (!confirm('Are you sure you want to delete this product?')) {
+      return;
+    }
+    this.productService.delete(this.id);
     this.router.navigate(['/admin/catalog']);
   }
 

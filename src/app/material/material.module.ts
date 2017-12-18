@@ -8,7 +8,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
+import { MatSortModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import {MatTableModule} from '@angular/material/table';
     MatIconModule,
     MatSelectModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   exports: [
     MatTabsModule,
@@ -31,7 +35,9 @@ import {MatTableModule} from '@angular/material/table';
     MatIconModule,
     MatSelectModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ]
 })
 export class MaterialModule { }

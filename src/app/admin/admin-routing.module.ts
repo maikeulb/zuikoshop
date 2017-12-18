@@ -14,12 +14,16 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      { path: 'catalog',
-        component: AdminCatalogComponent,
-        canActivate: [AuthGuard, AdminAuthGuard]
-      },
       { path: 'catalog/new',
         component: CatalogItemFormComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
+      },
+      { path: 'catalog/:id',
+        component: CatalogItemFormComponent,
+        canActivate: [AuthGuard, AdminAuthGuard]
+      },
+      { path: 'catalog',
+        component: AdminCatalogComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
       },
       { path: 'orders',
