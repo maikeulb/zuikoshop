@@ -9,17 +9,17 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
   selector: 'catalog-item',
   template: `
     <mat-card *ngIf="product.model">
-      <mat-card-header></mat-card-header>
       <img mat-card-image
       *ngIf="product.imageUrl"
       [src]="product.imageUrl"
       alt="{{ product.model }}">
 
-      <mat-card-content>
-        <a  (click)="catalogItemDetails.emit(product)">
-        {{product.model}}
-        </a>
-      </mat-card-content>
+  <mat-card-content>
+    <a  (click)="catalogItemDetails.emit(product)"></a>
+    <h2>{{ product.model}}</h2>
+    <p>{{ product.price | currency:'EUR':true }}</p>
+  </mat-card-content>
+
       <mat-card-actions>
         <button mat-button
         (click)="addToCart.emit(book)" >
@@ -27,7 +27,7 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
         </button>
         <button mat-button
         (click)="bookDetails.emit(book)" >
-        <i class="material-icons">search</i>
+        <i class="material-icons">info</i>
         </button>
       </mat-card-actions>
     </mat-card>
@@ -36,8 +36,7 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
     `
     mat-card {
       width: 240px;
-      height: 260px;
-      margin: 15px;
+      margin: 10px;
     }
 
     @media only screen and (max-width: 768px) {

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
@@ -13,16 +14,30 @@ import { ProductService} from '../../core/services/product.service';
 @Component({
   selector: 'app-catalog-list',
   template: `
-    <div class="row">
 
-      <div class="col-3">
+    <mat-sidenav-container
+      class="sidenav-container" (backdropClick)="close('backdrop')">
+
+      <mat-sidenav #sidenav [mode]="navMode" opened="false" (keydown.escape)="close('escape')" disableClose>
         <catalog-item-filter
-        [category]="category">
+          [category]="category">
         </catalog-item-filter>
-      </div>
+      </mat-sidenav>
 
-      <div class="catalog-list-container">
-        <div *ngIf="cart$ | async as cart" class="catalog-list">
+      <mat-sidenav-content
+        style="background:#FFFFFF;"
+        class="example-sidenav-content" *ngIf="cart$ | async as cart" class="catalog-list">
+        <div class="side-btn" *ngIf="!sidenav.opened">
+
+          <p>
+            <button mat-button
+              (click)="sidenav.open()">
+              Filter
+            </button>
+          </p>
+
+        </div>
+        <div class="flex-row">
           <ng-container *ngFor="let p of filteredProducts; let i = index">
             <catalog-item
               [product]="p"
@@ -30,20 +45,14 @@ import { ProductService} from '../../core/services/product.service';
             </catalog-item>
           </ng-container>
         </div>
-      </div>
+      </mat-sidenav-content>
 
-      <mat-progress-spinner
-        *ngIf="loading$ | async"
-        color="primary"
-        mode="indeterminate"
-        value="50">
-      </mat-progress-spinner>
-
-    </div>
+    </mat-sidenav-container>
 
   `,
   styles: [
   `
+
     .catalog-list-container {
       margin-left : 10%;
       margin-right: 10%;
@@ -54,6 +63,35 @@ import { ProductService} from '../../core/services/product.service';
       flex-wrap: wrap;
       justify-content: center;
     }
+
+.side-btn{
+    margin: 1em;
+    text-align: center;
+}
+
+.example-container {
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
   `
   ],
 })
@@ -62,6 +100,27 @@ export class CatalogListComponent {
   filteredProducts: Product[] = [];
   category: string;
   cart$: Observable<any>;
+
+  @ViewChild('sidenav') sidenav: MatSidenav;
+  navMode = 'side';
+
+  close(reason: string) {
+    this.reason = reason;
+    this.sidenav.close();
+  }
+
+  @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        if (event.target.innerWidth < 769) {
+            this.sidenav.close();
+            this.navMode = 'side';
+        }
+        if (event.target.innerWidth > 769) {
+           this.sidenav.open();
+           this.navMode = 'side';
+        }
+    }
+
 
   constructor(
     private route: ActivatedRoute,

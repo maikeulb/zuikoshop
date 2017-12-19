@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   template: `
+
     <mat-card class="example-card">
       <img mat-card-image style="max-width:100%;" [src]="backgroundImage">
       <mat-card-content>
