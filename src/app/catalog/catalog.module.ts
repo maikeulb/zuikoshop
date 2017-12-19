@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { CatalogRoutingModule, routedComponents } from './catalog-routing.module';
 
-import { AddToCartComponent } from './item-details/add-to-cart.component';
-import { CatalogItemComponent } from './catalog-list/catalog-item.component';
-import { ItemNavigatorComponent } from './item-details/item-navigator.component';
+import { AddToCartComponent } from './catalog-item-details/add-to-cart.component';
+import { CatalogItemNavigatorComponent } from './catalog-item-details/catalog-item-navigator.component';
+import { CatalogItemFilterComponent } from './catalog-item-filter/catalog-item-filter.component';
 
 @NgModule({
   imports: [
@@ -15,8 +15,8 @@ import { ItemNavigatorComponent } from './item-details/item-navigator.component'
   declarations: [
     routedComponents,
     AddToCartComponent,
-    CatalogItemComponent,
-    ItemNavigatorComponent,
+    CatalogItemNavigatorComponent,
+    CatalogItemFilterComponent,
   ]
 })
 export class CatalogModule { }

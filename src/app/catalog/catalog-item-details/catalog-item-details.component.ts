@@ -5,10 +5,10 @@ import { Item } from './../models/item';
 import { ItemNav } from './../models/item-nav';
 
 @Component({
-    selector: 'app-item-details',
+    selector: 'app-catalog-item-details',
     template: `
       <div class="item-details" >
-        <app-item-navigator></app-item-navigator>
+        <app-catalog-item-navigator></app-catalog-item-navigator>
         <table> 
           <td width="50%">
           </td>
@@ -24,4 +24,4 @@ import { ItemNav } from './../models/item-nav';
       </div>
     `,
 })
-export class ItemDetailsComponent {}
+export class CatalogItemDetailsComponent {}

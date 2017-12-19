@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSort, MatPaginator, MatTableDataSource} from '@angular/material'; 
 
 import { Subscription } from 'rxjs/Subscription';
@@ -23,6 +23,7 @@ import { ProductService } from '../../core/services/product.service';
 
     <mat-table #table [dataSource]="dataSource" matSort>
 
+     (reload)="reloadItems()">
       <ng-container matColumnDef="model">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
         <mat-cell *matCellDef="let product"> {{product.model}} </mat-cell>
@@ -88,23 +89,22 @@ export class AdminCatalogComponent {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private productService: ProductService) {
-    this.subscription = this.productService.getAll()
-      .subscribe(products => {
-        this.products = products;
-        this.initializeTable(products);
-      });
-  }
-
-  private initializeTable(products: Product[]) {
-    this.dataSource = new MatTableDataSource(products);
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  ngAfterViewInit() {
+    this.subscription = this.productService.getAll()
+      .subscribe(products => {
+        this.products = products;
+        this.dataSource = new MatTableDataSource(products);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
   }
 
   ngOnDestroy() {

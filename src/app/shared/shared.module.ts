@@ -6,6 +6,9 @@ import { CustomFormsModule } from 'ng2-validation';
 
 import { MaterialModule } from './material/material.module';
 
+import { CatalogItemComponent } from './catalog-item/catalog-item.component';
+import { CatalogItemQuantityComponent } from './catalog-item-quantity/catalog-item-quantity.component';
+
 @NgModule({
   imports: [
     MaterialModule,
@@ -20,8 +23,12 @@ import { MaterialModule } from './material/material.module';
     CustomFormsModule,
     FlexLayoutModule,
     CommonModule,
+    CatalogItemComponent,
+    CatalogItemQuantityComponent,
   ],
-  declarations: [],
-  providers: [],
+  declarations: [
+    CatalogItemComponent,
+    CatalogItemQuantityComponent,
+  ]
 })
 export class SharedModule { }

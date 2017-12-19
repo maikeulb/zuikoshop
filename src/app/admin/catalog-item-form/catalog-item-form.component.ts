@@ -9,7 +9,7 @@ import { ProductService } from '../../core/services/product.service';
 import { FormControl, Validators} from '@angular/forms'; //move
 
 @Component({
-  selector: 'app-catalog-item-form',
+  selector: 'admin-catalog-item-form',
   template: `
     <div
     fxLayout="column"
