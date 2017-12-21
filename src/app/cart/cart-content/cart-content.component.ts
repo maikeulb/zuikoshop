@@ -6,25 +6,61 @@ import { Router } from '@angular/router';
   selector: 'app-cart-content',
   template: `
 
-    <div *ngIf="cart$ | async as cart">
+    <div *ngIf="cart$ | async as cart" class="cart-content">
       <h3>
-        Your cart
+        Shopping Cart
       </h3>
       <div>
         You have {{ cart.totalItemsCount }} items in your shopping cart.
       </div>
-      <app-cart-row *ngFor="let item of cart.items" 
+      <app-cart-row *ngFor="let item of cart.items"
         [product]="item">
       </app-cart-row>
       <div class="footer">
-        <div style="display:inline-block"> Total : {{cart.totalPrice | currency:'USD':true}}</div>
-        <button mat-button routerLink="/cart/order" color="primary">
+        <div style="display:inline-block">
+          Total : {{cart.totalPrice | currency:'USD':true}}
+        </div>
+        <button mat-raised-button routerLink="/cart/order" color="primary">
           Checkout
         </button>
       </div>
     </div>
 
   `,
+  styles: [`
+
+    .cart-content{
+      margin-left: 10% ;
+      margin-right: 10% ;
+    }
+
+    @media only screen and (max-width: 768px) {
+     .cart-content {
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+    }
+
+    .footer {
+      display: block;
+      right: 200px;
+      position: absolute;
+    }
+
+    .footer > button {
+      display:inline-block;
+      margin-right: 20px;
+    }
+
+    .footer > div {
+      display:inline-block;
+      margin-right: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+  `]
+
 })
 export class CartContentComponent implements OnInit {
   cart$;

@@ -51,13 +51,15 @@ import { ProductService} from '../../core/services/product.service';
   styles: [`
 
     .sidenav-container {
-      margin : 20px;
+      margin-left: 10%;
+      margin-right: 10%;
       text-align: center;
     }
 
     @media only screen and (max-width: 768px) {
      .sidenav-container {
-        margin: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
       }
     }
 
