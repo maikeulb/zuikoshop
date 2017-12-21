@@ -17,19 +17,22 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
   <mat-card-content>
     <a  (click)="catalogItemDetails.emit(product)"></a>
     <h2>{{ product.model}}</h2>
-    <p>{{ product.price | currency:'EUR':true }}</p>
+    <p>{{ product.price | currency:'USD':true }}</p>
   </mat-card-content>
 
       <mat-card-actions>
+        <div *ngIf="showActions && shoppingCart">
         <button mat-button
-        (click)="addToCart.emit(book)" >
+        (click)="addToCart()" >
         <i class="material-icons">add_shopping_cart</i>
         </button>
         <button mat-button
         (click)="bookDetails.emit(book)" >
         <i class="material-icons">info</i>
         </button>
+      </div>
       </mat-card-actions>
+
     </mat-card>
     `,
   styles: [

@@ -16,9 +16,9 @@ import { ProductService} from '../../core/services/product.service';
   template: `
 
     <mat-sidenav-container
-      class="sidenav-container" (backdropClick)="close('backdrop')">
+      class="sidenav-container" (backdropClick)="close()">
 
-      <mat-sidenav #sidenav [mode]="navMode" opened="false" (keydown.escape)="close('escape')" disableClose>
+      <mat-sidenav #sidenav [mode]="navMode" opened="false" (keydown.escape)="close()" disableClose>
         <catalog-item-filter
           [category]="category">
         </catalog-item-filter>
@@ -104,8 +104,7 @@ export class CatalogListComponent {
   @ViewChild('sidenav') sidenav: MatSidenav;
   navMode = 'side';
 
-  close(reason: string) {
-    this.reason = reason;
+  close() {
     this.sidenav.close();
   }
 

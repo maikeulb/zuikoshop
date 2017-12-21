@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
     <mat-card class="example-card">
       <img mat-card-image style="max-width:100%;" [src]="backgroundImage">
       <mat-card-content>
-        <h3 class="mat-subheading-1">Your Vision, Our Future | <a href=''>
+        <p>Your Vision, Our Future | <a href=''>
           Yoshihisa Maitani</a>
-        </h3>
+        </p>
       </mat-card-content>
     </mat-card>
   `
