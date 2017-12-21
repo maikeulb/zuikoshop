@@ -5,8 +5,8 @@ import { AuthGuard} from '../core/services/auth-guard.service';
 
 import { CartComponent } from './cart.component';
 import { CartContentComponent } from './cart-content/cart-content.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { CheckoutCompleteComponent } from './checkout-complete/checkout-complete.component';
+import { CheckoutComponent } from './cart-checkout/checkout.component';
+import { CheckoutCompleteComponent } from './cart-checkout-complete/checkout-complete.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 const routes: Routes = [

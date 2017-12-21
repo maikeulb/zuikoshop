@@ -15,8 +15,8 @@ import { ProductService} from '../../core/services/product.service';
   selector: 'app-catalog-list',
   template: `
 
-    <mat-sidenav-container
-      class="sidenav-container" (backdropClick)="close()">
+    <mat-sidenav-container class="sidenav-container"
+    (backdropClick)="close()">
 
       <mat-sidenav #sidenav [mode]="navMode" opened="false" (keydown.escape)="close()" disableClose>
         <catalog-item-filter
@@ -24,76 +24,49 @@ import { ProductService} from '../../core/services/product.service';
         </catalog-item-filter>
       </mat-sidenav>
 
-      <mat-sidenav-content
-        style="background:#FFFFFF;"
-        class="example-sidenav-content" *ngIf="cart$ | async as cart" class="catalog-list">
-        <div class="side-btn" *ngIf="!sidenav.opened">
+        <mat-sidenav-content
+          style="background:#FFFFFF;"
+          *ngIf="cart$ | async as cart" >
 
-          <p>
+          <div class="side-btn" *ngIf="!sidenav.opened">
             <button mat-button
               (click)="sidenav.open()">
               Filter
             </button>
-          </p>
+          </div>
 
-        </div>
-        <div class="flex-row">
-          <ng-container *ngFor="let p of filteredProducts; let i = index">
-            <catalog-item
-              [product]="p"
-              [shopping-cart]="cart">
-            </catalog-item>
-          </ng-container>
-        </div>
-      </mat-sidenav-content>
+          <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="10px">
+            <ng-container *ngFor="let p of filteredProducts; let i = index">
+              <catalog-item
+                [product]="p"
+                [shopping-cart]="cart">
+              </catalog-item>
+            </ng-container>
+          </div>
+        </mat-sidenav-content>
 
     </mat-sidenav-container>
 
   `,
-  styles: [
-  `
+  styles: [`
 
-    .catalog-list-container {
-      margin-left : 10%;
-      margin-right: 10%;
+    .sidenav-container {
+      margin : 20px;
       text-align: center;
     }
-    .catalog-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+
+    @media only screen and (max-width: 768px) {
+     .sidenav-container {
+        margin: 15px;
+      }
     }
 
-.side-btn{
-    margin: 1em;
-    text-align: center;
-}
+    .side-btn{
+        margin: 1em;
+        text-align: center;
+    }
 
-.example-container {
-  position: absolute;
-  top: 60px;
-  bottom: 60px;
-  left: 0;
-  right: 0;
-}
-
-.example-sidenav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  background: rgba(255, 0, 0, 0.5);
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-  `
-  ],
+  `],
 })
 export class CatalogListComponent {
   products: Product[] = [];
@@ -142,13 +115,13 @@ export class CatalogListComponent {
       })
       .subscribe(params => {
         this.category = params.get('category');
-        this.applyFilter();      
+        this.applyFilter();
       });
   }
 
-  private applyFilter() { 
-    this.filteredProducts = (this.category) ? 
-    this.products.filter(p => p.category === this.category) : 
+  private applyFilter() {
+    this.filteredProducts = (this.category) ?
+    this.products.filter(p => p.category === this.category) :
     this.products;
   }
 

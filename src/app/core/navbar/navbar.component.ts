@@ -63,13 +63,11 @@ import { AuthService } from '../services/auth.service';
     </mat-menu>
 
   `,
-  styles: [
-  `
+  styles: [`
     .fill-remaining-space {
       flex: 1 1 auto;
     }
-  `
-  ]
+  `]
 })
 export class NavbarComponent implements OnInit {
   appUser: AppUser;

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-home',
   template: `
 
-    <mat-card class="example-card">
+    <mat-card>
       <img mat-card-image style="max-width:100%;" [src]="backgroundImage">
       <mat-card-content>
         <p>Your Vision, Our Future | <a href=''>

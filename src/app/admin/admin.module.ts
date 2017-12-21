@@ -16,10 +16,3 @@ import { SharedModule } from 'shared/shared.module';
   ]
 })
 export class AdminModule { }
-
-// routed feature module
-//
-// declartions
-// no providers
-// no exports
-// imported by nobody if lazy

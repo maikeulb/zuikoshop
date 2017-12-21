@@ -7,12 +7,12 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     <p>page not found</p>
   `,
 
-  styles: [
-    `
+  styles: [`
     :host {
       text-align: center;
     }
-  `,
+  `
   ],
+
 })
 export class PageNotFoundComponent {}

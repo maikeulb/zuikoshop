@@ -9,32 +9,35 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
   selector: 'catalog-item',
   template: `
     <mat-card *ngIf="product.model">
-      <img mat-card-image
-      *ngIf="product.imageUrl"
-      [src]="product.imageUrl"
-      alt="{{ product.model }}">
 
-  <mat-card-content>
-    <a  (click)="catalogItemDetails.emit(product)"></a>
-    <h2>{{ product.model}}</h2>
-    <p>{{ product.price | currency:'USD':true }}</p>
-  </mat-card-content>
+      <img mat-card-image
+        *ngIf="product.imageUrl"
+        [src]="product.imageUrl"
+        alt="{{ product.model }}"
+      >
+
+      <mat-card-content>
+        <a  (click)="catalogItemDetails.emit(product)"></a>
+        <h2>{{ product.model}}</h2>
+        <p>{{ product.price | currency:'USD':true }}</p>
+      </mat-card-content>
 
       <mat-card-actions>
         <div *ngIf="showActions && shoppingCart">
-        <button mat-button
-        (click)="addToCart()" >
-        <i class="material-icons">add_shopping_cart</i>
-        </button>
-        <button mat-button
-        (click)="bookDetails.emit(book)" >
-        <i class="material-icons">info</i>
-        </button>
-      </div>
+          <button mat-button
+            (click)="addToCart()" >
+            <i class="material-icons">add_shopping_cart</i>
+          </button>
+          <button mat-button
+            (click)="bookDetails.emit(book)" >
+            <i class="material-icons">info</i>
+          </button>
+        </div>
       </mat-card-actions>
 
     </mat-card>
     `,
+
   styles: [
     `
     mat-card {
@@ -63,9 +66,7 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
       cursor:pointer;
     }
     img {
-      width: 170px;
-      min-width: 60px;
-      height: 174px;
+      width: 150px;
     }
     mat-card-content {
       margin-top: 15px;
