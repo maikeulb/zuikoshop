@@ -3,7 +3,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { DataSource } from '@angular/cdk/table';
 
 import { AdminRoutingModule, routedComponents } from './admin-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'shared/shared.module';
 
 @NgModule({
   imports: [

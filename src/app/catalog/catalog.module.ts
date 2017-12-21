@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'shared/shared.module';
 import { CatalogRoutingModule, routedComponents } from './catalog-routing.module';
 
 import { AddToCartComponent } from './catalog-item-details/add-to-cart.component';

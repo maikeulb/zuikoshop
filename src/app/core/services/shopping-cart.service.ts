@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take'; 
 import 'rxjs/add/operator/map'; 
 
-import { Product } from '../models/product';
-import { ShoppingCart } from '../models/shopping-cart';
+import { Product } from 'shared/models/product';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 

@@ -7,7 +7,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { SharedModule} from '../shared/shared.module';
+import { SharedModule} from 'shared/shared.module';
 
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';

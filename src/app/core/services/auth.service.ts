@@ -8,7 +8,7 @@ import 'rxjs/add/observable/of';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
-import { AppUser } from '../models/app-user';
+import { AppUser } from 'shared/models/app-user';
 import { UserService } from './user.service';
 
 @Injectable()
