@@ -3,13 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   template: `
-
     <mat-card>
       <img mat-card-image style="max-width:100%;" [src]="backgroundImage">
       <mat-card-content>
-        <p>Your Vision, Our Future | <a href=''>
-          Yoshihisa Maitani</a>
-        </p>
+        <p>Your Vision, Our Future</p>
       </mat-card-content>
     </mat-card>
   `

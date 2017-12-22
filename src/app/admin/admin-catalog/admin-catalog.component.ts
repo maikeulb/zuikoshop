@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Product } from '../models/product';
 
-import { ProductService } from '../../core/services/product.service';
+import { ProductService } from 'core/services/product.service';
 
 @Component({
   selector: 'admin-catalog',

@@ -5,7 +5,7 @@ import { CatalogRoutingModule, routedComponents } from './catalog-routing.module
 
 import { AddToCartComponent } from './catalog-item-details/add-to-cart.component';
 import { CatalogItemNavigatorComponent } from './catalog-item-details/catalog-item-navigator.component';
-import { CatalogItemFilterComponent } from './catalog-item-filter/catalog-item-filter.component';
+import { CatalogItemFilterComponent } from './catalog-list/catalog-item-filter.component';
 
 @NgModule({
   imports: [

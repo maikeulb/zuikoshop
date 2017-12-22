@@ -19,9 +19,9 @@ import { ProductService} from '../../core/services/product.service';
     (backdropClick)="close()">
 
       <mat-sidenav #sidenav [mode]="navMode" opened="false" (keydown.escape)="close()" disableClose>
-        <catalog-item-filter
+        <app-catalog-item-filter
           [category]="category">
-        </catalog-item-filter>
+        </app-catalog-item-filter>
       </mat-sidenav>
 
         <mat-sidenav-content
