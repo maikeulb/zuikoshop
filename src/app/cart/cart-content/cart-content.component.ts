@@ -1,28 +1,38 @@
-import { ShoppingCartService } from '../../core/services/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { ShoppingCartService } from 'core/services/shopping-cart.service';
 
 @Component({
   selector: 'app-cart-content',
   template: `
 
-    <div *ngIf="cart$ | async as cart" class="cart-content">
+    <ng-template #empty>
+      <app-cart-empty></app-cart-empty>
+    </ng-template>
+
+    <div *ngIf="cart$ | async as cart; else empty" class="cart-content">
       <h3>
         Shopping Cart
       </h3>
       <div>
         You have {{ cart.totalItemsCount }} items in your shopping cart.
       </div>
+
       <app-cart-row *ngFor="let item of cart.items"
         [product]="item">
       </app-cart-row>
+
       <div class="footer">
+
         <div style="display:inline-block">
           Total : {{cart.totalPrice | currency:'USD':true}}
         </div>
-        <button mat-raised-button routerLink="/cart/order" color="primary">
+
+        <button mat-raised-button routerLink="/cart/checkout" color="primary">
           Checkout
         </button>
+
       </div>
     </div>
 
@@ -42,9 +52,8 @@ import { Router } from '@angular/router';
     }
 
     .footer {
-      display: block;
-      right: 200px;
-      position: absolute;
+      display: flex;
+      justify-content: flex-end;
     }
 
     .footer > button {

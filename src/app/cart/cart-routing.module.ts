@@ -5,9 +5,9 @@ import { AuthGuard} from '../core/services/auth-guard.service';
 
 import { CartComponent } from './cart.component';
 import { CartContentComponent } from './cart-content/cart-content.component';
-import { CheckoutComponent } from './cart-checkout/checkout.component';
-import { CheckoutCompleteComponent } from './cart-checkout-complete/checkout-complete.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { CartCheckoutComponent } from './cart-checkout/cart-checkout.component';
+// import { CartCheckoutCompleteComponent } from './cart-checkout-complete/cart-checkout-complete.component';
+import { CartMyOrdersComponent } from './cart-my-orders/cart-my-orders.component';
 
 const routes: Routes = [
   {
@@ -17,13 +17,13 @@ const routes: Routes = [
       { path: '',
         component: CartContentComponent },
       { path: 'checkout',
-        component: CheckoutComponent,
+        component: CartCheckoutComponent,
         canActivate: [AuthGuard] },
-      { path: 'checkout-success/:id',
-        component: CheckoutCompleteComponent,
-        canActivate: [AuthGuard] },
+      // { path: 'checkout-complete/:id',
+        // component: CartCheckoutCompleteComponent,
+        // canActivate: [AuthGuard] },
       { path: 'my-orders',
-        component: MyOrdersComponent,
+        component: CartMyOrdersComponent,
         canActivate: [AuthGuard] },
     ]
   }
@@ -38,7 +38,7 @@ export class CartRoutingModule { }
 export const routedComponents = [
   CartComponent,
   CartContentComponent,
-  CheckoutComponent,
-  CheckoutCompleteComponent,
-  MyOrdersComponent,
+  CartCheckoutComponent,
+  // CartCheckoutCompleteComponent,
+  CartMyOrdersComponent,
 ];
