@@ -24,10 +24,11 @@ import { CartRow } from '../models/cart-row';
         </mat-grid-tile>
 
         <mat-grid-tile>
-          <product-quantity 
-            [product]="product" 
-            [shopping-cart]="cart">
-          </product-quantity>
+
+          <mat-form-field class="form-width">
+            <input matInput type="number">
+          </mat-form-field>
+
         </mat-grid-tile>
 
         <mat-grid-tile>
@@ -50,7 +51,9 @@ import { CartRow } from '../models/cart-row';
       justify-content: flex-end!important;
       padding-right: 58px;
     }
-
+    .form-width {
+       width: 40px;
+    }
 `]
 
 })
