@@ -7,7 +7,7 @@ import { AdminAuthGuard } from 'core/services/admin-auth-guard.service';
 import { AdminComponent } from './admin.component';
 import { AdminCatalogComponent } from './admin-catalog/admin-catalog.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
-import { CatalogItemFormComponent } from './admin-catalog/catalog-item-form.component';
+import { AdminCatalogItemFormComponent } from './admin-catalog/admin-catalog-item-form.component';
 
 const routes: Routes = [
   {
@@ -15,11 +15,11 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: 'catalog/new',
-        component: CatalogItemFormComponent,
+        component: AdminCatalogItemFormComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
       },
       { path: 'catalog/:id',
-        component: CatalogItemFormComponent,
+        component: AdminCatalogItemFormComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
       },
       { path: 'catalog',
@@ -44,5 +44,5 @@ export const routedComponents = [
   AdminComponent,
   AdminCatalogComponent,
   AdminOrdersComponent,
-  CatalogItemFormComponent
+  AdminCatalogItemFormComponent
 ];

@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../models/product';
 import { ShoppingCart } from '../models/shopping-cart';
 
-import { ShoppingCartService } from '../../core/services/shopping-cart.service';
+import { ShoppingCartService } from 'core/services/shopping-cart.service';
 
 @Component({
   selector: 'catalog-item',
@@ -13,8 +13,7 @@ import { ShoppingCartService } from '../../core/services/shopping-cart.service';
       <img mat-card-image
         *ngIf="product.imageUrl"
         [src]="product.imageUrl"
-        alt="{{ product.model }}"
-      >
+        alt="{{ product.model }}">
 
       <mat-card-content>
         <a  (click)="catalogItemDetails.emit(product)"></a>

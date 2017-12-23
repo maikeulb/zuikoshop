@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule} from '@angular/flex-layout';
 import { CustomFormsModule } from 'ng2-validation';
@@ -7,7 +8,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { MaterialModule } from './material/material.module';
 
 import { CatalogItemComponent } from './catalog-item/catalog-item.component';
-import { CatalogItemQuantityComponent } from './catalog-item-quantity/catalog-item-quantity.component';
+import { CartOrderDetailsComponent } from './cart-order-details/cart-order-details.component';
 
 @NgModule({
   imports: [
@@ -16,19 +17,20 @@ import { CatalogItemQuantityComponent } from './catalog-item-quantity/catalog-it
     CustomFormsModule,
     FlexLayoutModule,
     CommonModule,
+    RouterModule,
   ],
   exports: [
     MaterialModule,
     FormsModule,
     CustomFormsModule,
     FlexLayoutModule,
-    CommonModule,
     CatalogItemComponent,
-    CatalogItemQuantityComponent,
+    CartOrderDetailsComponent,
+    CommonModule,
   ],
   declarations: [
     CatalogItemComponent,
-    CatalogItemQuantityComponent,
+    CartOrderDetailsComponent,
   ]
 })
 export class SharedModule { }

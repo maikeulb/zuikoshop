@@ -5,11 +5,11 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
-import { Product } from '../../shared/models/product';
-import { ShoppingCart } from '../../shared/models/shopping-cart';
+import { Product } from 'shared/models/product';
+import { ShoppingCart } from 'shared/models/shopping-cart';
 
-import { ShoppingCartService } from '../../core/services/shopping-cart.service';
-import { ProductService} from '../../core/services/product.service';
+import { ShoppingCartService } from 'core/services/shopping-cart.service';
+import { ProductService} from 'core/services/product.service';
 
 @Component({
   selector: 'app-catalog-list',
@@ -35,7 +35,7 @@ import { ProductService} from '../../core/services/product.service';
             </button>
           </div>
 
-          <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="10px">
+          <div fxLayout="row wrap" fxLayoutAlign="space-around start" fxLayoutAlign.gt-sm="start start" >
             <ng-container *ngFor="let p of filteredProducts; let i = index">
               <catalog-item
                 [product]="p"
@@ -51,8 +51,8 @@ import { ProductService} from '../../core/services/product.service';
   styles: [`
 
     .sidenav-container {
-      margin-left: 10%;
-      margin-right: 10%;
+      margin-left: 5%;
+      margin-right: 5%;
       text-align: center;
     }
 

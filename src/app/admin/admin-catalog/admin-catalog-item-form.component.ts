@@ -91,7 +91,7 @@ import { FormControl, Validators} from '@angular/forms';
   `]
 
 })
-export class CatalogItemFormComponent implements OnInit {
+export class AdminCatalogItemFormComponent implements OnInit {
   categories$;
   product = {};
   id;

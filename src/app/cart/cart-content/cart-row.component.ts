@@ -24,9 +24,10 @@ import { CartRow } from '../models/cart-row';
         </mat-grid-tile>
 
         <mat-grid-tile>
-          <mat-form-field>
-            <input matInput type="number">
-          </mat-form-field>
+          <product-quantity 
+            [product]="product" 
+            [shopping-cart]="cart">
+          </product-quantity>
         </mat-grid-tile>
 
         <mat-grid-tile>
