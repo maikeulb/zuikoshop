@@ -22,8 +22,8 @@ import { ProductService } from 'core/services/product.service';
     </div>
 
     <mat-table #table [dataSource]="dataSource" matSort>
-
      (reload)="reloadItems()">
+
       <ng-container matColumnDef="model">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Model </mat-header-cell>
         <mat-cell *matCellDef="let product"> {{product.model}} </mat-cell>
@@ -46,8 +46,8 @@ import { ProductService } from 'core/services/product.service';
     </mat-table>
   </div>
   <mat-paginator #paginator
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 15]">
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 15]">
   </mat-paginator>
   `,
   styles: [

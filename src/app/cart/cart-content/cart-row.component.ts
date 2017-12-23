@@ -43,6 +43,7 @@ import { CartRow } from '../models/cart-row';
 
     </div>
   `,
+
   styles: [`
     .remove-item > ::ng-deep figure {
       justify-content: flex-end!important;
