@@ -15,13 +15,14 @@ import { ProductService} from 'core/services/product.service';
   selector: 'app-catalog-list',
   template: `
 
-    <mat-sidenav-container class="sidenav-container"
-    (backdropClick)="close()">
+    <mat-sidenav-container class="sidenav-container">
 
-      <mat-sidenav #sidenav [mode]="navMode" opened="false" (keydown.escape)="close()" disableClose>
+      <mat-sidenav #sidenav class="example-container" [mode]="navMode" opened="false">
+
         <app-catalog-item-filter
           [category]="category">
         </app-catalog-item-filter>
+
       </mat-sidenav>
 
         <mat-sidenav-content
@@ -43,6 +44,7 @@ import { ProductService} from 'core/services/product.service';
               </catalog-item>
             </ng-container>
           </div>
+
         </mat-sidenav-content>
 
     </mat-sidenav-container>
@@ -50,10 +52,13 @@ import { ProductService} from 'core/services/product.service';
   `,
   styles: [`
 
+
     .sidenav-container {
       margin-left: 5%;
       margin-right: 5%;
       text-align: center;
+      flex: 1;
+      position: relative;
     }
 
     @media only screen and (max-width: 768px) {
@@ -68,6 +73,7 @@ import { ProductService} from 'core/services/product.service';
         text-align: center;
     }
 
+
   `],
 })
 export class CatalogListComponent {
@@ -77,17 +83,35 @@ export class CatalogListComponent {
   cart$: Observable<any>;
 
   @ViewChild('sidenav') sidenav: MatSidenav;
-  navMode = 'side';
 
   close() {
     this.sidenav.close();
+  }
+
+  open() {
+    this.sidenav.open();
+  }
+
+w = window.innerWidth;
+navMode = 'side';
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    public shoppingCartService: ShoppingCartService
+  ) {
+
+  }
+
+  async ngOnInit() {
+    this.cart$ = await this.shoppingCartService.getCart();
+    this.populateProducts();
   }
 
   @HostListener('window:resize', ['$event'])
     onResize(event) {
         if (event.target.innerWidth < 769) {
             this.sidenav.close();
-            this.navMode = 'side';
+            this.navMode = 'over';
         }
         if (event.target.innerWidth > 769) {
            this.sidenav.open();
@@ -95,18 +119,6 @@ export class CatalogListComponent {
         }
     }
 
-
-  constructor(
-    private route: ActivatedRoute,
-    private productService: ProductService,
-    public shoppingCartService: ShoppingCartService
-  ) {
-  }
-
-  async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
-    this.populateProducts();
-  }
 
   private populateProducts() { 
     this.productService
