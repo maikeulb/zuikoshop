@@ -29,6 +29,7 @@ import { AuthService } from '../services/auth.service';
               {{ appUser.name }}
             </button>
             <mat-menu #menu = "matMenu" [overlapTrigger]="false">
+              <button mat-menu-item routerLink="/cart/myorders">My Orders</button>
               <ng-container *ngIf="appUser.isAdmin">
                 <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
                 <button mat-menu-item routerLink="/admin/catalog">Manage Catalog</button>
@@ -51,6 +52,7 @@ import { AuthService } from '../services/auth.service';
       <button mat-menu-item routerLink="/catalog">Shop</button>
       <button mat-menu-item routerLink="/cart">Cart</button>
       <div *ngIf="appUser; else menuAnonymousUser">
+        <button mat-menu-item routerLink="/cart/myorders">My Orders</button>
         <ng-container *ngIf="appUser.isAdmin">
           <button mat-menu-item routerLink="/admin/orders">Manage Orders</button>
           <button mat-menu-item routerLink="/admin/catalog">Manage Catalog</button>
