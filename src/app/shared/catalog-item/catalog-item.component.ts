@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Product } from '../models/product';
 import { ShoppingCart } from '../models/shopping-cart';
@@ -28,7 +29,7 @@ import { ShoppingCartService } from 'core/services/shopping-cart.service';
             <i class="material-icons">add_shopping_cart</i>
           </button>
           <button mat-button
-            (click)="bookDetails.emit(book)" >
+            (click)="goToDetails()" >
             <i class="material-icons">info</i>
           </button>
         </div>
@@ -90,9 +91,16 @@ export class CatalogItemComponent {
   @Input('show-actions') showActions = true;
   @Input('shopping-cart') shoppingCart: ShoppingCart; 
 
-  constructor(private cartService: ShoppingCartService) { }
+  constructor(
+    private cartService: ShoppingCartService,
+    private router: Router) {}
 
   addToCart() {
     this.cartService.addToCart(this.product);
   }
+
+  goToDetails() {
+     this.router.navigate(['/catalog/item/', this.product.$key]);
+  }
+
 }
