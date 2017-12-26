@@ -52,22 +52,30 @@ import { ProductService} from 'core/services/product.service';
   `,
   styles: [`
 
+.sidenav-container .mat-drawer-content {
+  margin-left: 170px !important;
+
+}
+
+@media (max-width: 768px) {
+
+    .sidenav-container .mat-drawer-content {
+      margin-left: 0 !important;
+    }
+
+}
 
     .sidenav-container {
       margin-left: 5%;
       margin-right: 5%;
       text-align: center;
-      flex: 1;
-      position: relative;
     }
-
     @media only screen and (max-width: 768px) {
      .sidenav-container {
         margin-left: 15px;
         margin-right: 15px;
       }
     }
-
     .side-btn{
         margin: 1em;
         text-align: center;
@@ -104,12 +112,12 @@ export class CatalogListComponent {
   @HostListener('window:resize', ['$event'])
     onResize(event) {
         if (event.target.innerWidth < 769) {
-            this.navMode = 'over';
+      this.navMode = 'over';
             this.sidenav.close();
         }
         if (event.target.innerWidth > 769) {
+      this.navMode = 'side';
            this.sidenav.open();
-           this.navMode = 'side';
         }
     }
 
