@@ -17,7 +17,7 @@ import { ProductService} from 'core/services/product.service';
 
     <mat-sidenav-container class="sidenav-container">
 
-      <mat-sidenav #sidenav class="example-container" [mode]="navMode" opened="false">
+      <mat-sidenav #sidenav class="example-container" [mode]="navMode" opened="true">
 
         <app-catalog-item-filter
           [category]="category">
@@ -83,17 +83,8 @@ export class CatalogListComponent {
   cart$: Observable<any>;
 
   @ViewChild('sidenav') sidenav: MatSidenav;
+  navMode = 'side';
 
-  close() {
-    this.sidenav.close();
-  }
-
-  open() {
-    this.sidenav.open();
-  }
-
-w = window.innerWidth;
-navMode = 'side';
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -105,13 +96,16 @@ navMode = 'side';
   async ngOnInit() {
     this.cart$ = await this.shoppingCartService.getCart();
     this.populateProducts();
+    if (window.innerWidth < 768) {
+      this.navMode = 'over';
+    }
   }
 
   @HostListener('window:resize', ['$event'])
     onResize(event) {
         if (event.target.innerWidth < 769) {
-            this.sidenav.close();
             this.navMode = 'over';
+            this.sidenav.close();
         }
         if (event.target.innerWidth > 769) {
            this.sidenav.open();
