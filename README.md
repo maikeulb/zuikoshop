@@ -21,7 +21,7 @@ Screenshots
 ### Home 
 ![home](/screenshots/home.png?raw=true "Home")
 ### Catalog 
-Display catalog-items per category (or all categories).
+Display cameras per category (or all categories).
 ![catalog](/screenshots/catalog.png?raw=true "Catalog")
 ### Cart 
 Displays cart items with the ability to checkout (updating quantity and
@@ -34,3 +34,8 @@ Admin users may manage the catalog.
 ![admin](/screenshots/admin.png?raw=true "Admin")
 ***
 ![edit](/screenshots/edit.png?raw=true "Edit")
+
+NOTE
+----
+The resources I use to create this project were come from Pluralsight and Mosh
+Hamedani's Angular course on Udemy.
