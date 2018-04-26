@@ -14,7 +14,9 @@ Technology
 
 Infrastructure
 ----------
-* Firebase
+* Firebase Realtime Database
+* Firebase Authentication
+* Firebase Hosting
 
 Screenshots
 ---
@@ -34,8 +36,3 @@ Admin users may manage the catalog.
 ![admin](/screenshots/admin.png?raw=true "Admin")
 ***
 ![edit](/screenshots/edit.png?raw=true "Edit")
-
-NOTE
-----
-The resources I use to create this project were come from Pluralsight and Mosh
-Hamedani's Angular course on Udemy.
